@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/styles.css">
+   <title> <%= title %> </title>
+  </head>
+  <body>
+
+    <% if ( admins ) { %>
+        <ul>
+            <% admins.forEach(admin => { %>
+              <ul>
+                <li>First Name: <%= admin.firstname %></li>
+                <li>Last Name: <%= admin.lastname %></li>
+                <li><a href="/<%= admin.id %>/admin">Upgrade to Admin</a></li>
+                <li>Upgrade Member Status: <a href="/login">Login</a></li>
+                <li><a href="/<%= admin.id %>/update">Update</a></li>
+                <form action="/<%= admin.id %>/delete" method="POST" style="display:inline;">
+                  <button type="submit">Delete</button>
+                </form>
+              </ul>
+            <% }); %>
+
+      <% } %>
+
+     <h3>Messages </h3>
+    <ul class="messid">
+      <% getMessages.forEach(message => { %>
+        <ul>
+          <li>Message id: <%= message.id %></li>
+          <li>Message: <%= message.message %></li>
+          <form action="/<%= message.id %>/adminDelete" method="POST" style="display:inline;">
+            <button type="submit">Delete</button>
+          </form>
+        </ul><br>
+      <% }); %>
+    </ul>
+
+  </body>
+</html>

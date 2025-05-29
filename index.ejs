@@ -1,0 +1,65 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/styles.css">
+   <title> <%= title %> </title>
+  </head>
+  <body>
+
+    <%- include('navbar', { links: links }) %>
+
+    <% if (locals.user) {%>
+      <h1>WELCOME BACK <%= user.username %></h1>
+      
+      <a href="/message">Create Message</a> <br>
+      
+
+      <ul>
+        <% allMessages.forEach(message => { %>
+          <ul>
+            <li>Author: <span><%= message.firstname %> <%= message.lastname %> </span></li>
+            <li>Message: <%= message.message %></li>
+            <li>Date Created: <%= message.created_at %></li><br>
+          </ul>
+        <% }); %>
+    </ul>
+
+      <a href="/log-out">LOG OUT</a>
+    <% } else { %>
+      <h2>User Messages</h2>
+    <ul>
+        <% allMessages.forEach(message => { %>
+          <ul>
+            <li>Message: <%= message.message %></li>
+          </ul>
+        <% }); %>
+
+        <h2>Users Signed Up Currently</h2>
+       
+        <ul>
+          
+          <% users.forEach(user => { %>
+            <ul>
+              <li>First Name: <%= user.firstname %></li>
+              <li>Last Name: <%= user.lastname %></li>
+
+              
+              <li><a href="/<%= user.id %>/admin">Admin Page</a></li>
+              <li>Upgrade: <a href="/login">Login</a></li>
+              <li><a href="/<%= user.id %>/update">Update</a></li>
+              <form action="/<%= user.id %>/delete" method="POST" style="display:inline;">
+                <button type="submit">Delete</button>
+              </form>
+            </ul>
+            
+          <% }); %>
+    </ul>
+    <%}%>
+    <br>
+    
+
+    <span>
+      <a href="/sign-up">Sign Up</a>
+    </span>
+
+  </body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+  </head>
+<body>
+  <h1><%= title %></h1>
+  <%- include("partials/errors.ejs") %>
+
+  <form action="/message" method="POST">
+    <label for="firstname">First Name: </label>
+    <input type="text" name="firstname" id="firstname" required><br>
+    <label for="lastname">Last Name: </label>
+    <input type="text" name="lastname" id="lastname" required><br>
+    <label for="email">Email: </label>
+    <input type="text" name="email" id="email" required><br>
+    
+    <label for="message">Message</label><br>
+    <textarea id="message" placeholder="message" type="text" name="message" rows="5" cols="15"></textarea><br>
+    <button type="submit">Submit</button>
+  </form>
+  <a href="/">Back to home</a>
+</body>
+</html>
