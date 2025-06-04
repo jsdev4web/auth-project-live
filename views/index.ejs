@@ -24,7 +24,7 @@
     </ul>
 
       <a href="/log-out">LOG OUT</a>
-    <% } else { %>
+    <% } else if { %>
       <h2>User Messages</h2>
     <ul>
         <% allMessages.forEach(message => { %>
@@ -53,7 +53,9 @@
             
           <% }); %>
     </ul>
-    <%}%>
+    <% } else { %>
+        <p>Nothing is added to the database yet!</p>
+      <% } %>
     <br>
     
 
