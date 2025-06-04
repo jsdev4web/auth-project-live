@@ -37,7 +37,7 @@ async function getAllMessages() {
 
 
 async function getMessages() {
-  const { rows } = await pool.query("SELECT msg.id, msg.firstname, msg.message FROM messages INNER JOIN signups ON msg.email = signups.email;");
+  const { rows } = await pool.query("SELECT msg.id, msg.firstname, msg.message FROM messages msg INNER JOIN signups ON msg.email = signups.email;");
   return rows;
 }
 
